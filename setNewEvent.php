@@ -1,10 +1,5 @@
 <?php
 
-//lire le fichier data
-//créer un array avec les données
-//ajouter des données à l'array
-//reencoder l'array
-//reécrire dans le fichier
 function store($file, $datas) {
     file_put_contents($file, json_encode($datas));
 }
@@ -13,10 +8,10 @@ function unstore($file) {
     return json_decode(file_get_contents($file), true);
 }
 
-$data = unstore('data-event.json');
-$data[] = array('date' => $_POST['date'], 'comment'=> $_POST['comment']);
-store('data-event.json', $data)
-
-
-
+if (isset($_GET['date'], $_GET['comment'])) {
+    $data = unstore('data-event.json');
+    $data[] = array('date' => $_GET['date'], 'comment' => $_GET['comment']);
+    store('data-event.json', $data);
+    echo 'fait gresgr h sggrgrgrgggggggggggggggggggggggggggggggggggggggggggggggggggggf';
+}
 ?>
