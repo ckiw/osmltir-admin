@@ -55,7 +55,7 @@
                         var dateTime = new Date(date + 'T' + hour);
                         $.ajax({
                             type: "GET",
-                            url: "http://127.0.0.1/osmltir/setNewEvent.php",
+                            url: "setNewEvent.php",
                             data: {date: dateTime.toJSON(), title: title, color: color}
                         }).done(function(msg) {
                             $('#event-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
