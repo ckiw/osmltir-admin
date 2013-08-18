@@ -10,7 +10,7 @@ function unstore($file) {
 
 if (isset($_GET['date'], $_GET['title'])) {
     $data = unstore('data-event.json');
-    $data[] = array('date' => $_GET['date'], 'title' => nl2br($_GET['title']), 'color' => $_GET['color']);
+    $data[] = array('date' => $_GET['date'], 'title' => nl2br($_GET['title']), 'eventClass' => $_GET['eventClass']);
     store('data-event.json', $data);
     echo 'Succès : événement enregistré.';
 }

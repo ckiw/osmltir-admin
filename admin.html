@@ -18,11 +18,11 @@
                     <input type="text" name="date" id="date" value="" />
                     <input type="text" name="hour" id="hour" value="" />
                     <textarea name="title" id="title" rows="4" cols="20"></textarea>
-                    <select id='color' name="color">
-                        <option value="#dd514c">Compétition FFT</option>
-                        <option value="#faa732">Compétition UFOLEP</option>
-                        <option value="#5eb95e">Evenement Club</option>
-                        <option value="#4bb1cf">Autre</option>
+                    <select id='eventClass' name="eventClass">
+                        <option value="event-fft">Compétition FFT</option>
+                        <option value="event-ufolep">Compétition UFOLEP</option>
+                        <option value="event-club">Evenement Club</option>
+                        <option value="event-other">Autre</option>
                     </select>
                     <input type="submit" value="Envoyer" />
                 </form>
@@ -41,7 +41,7 @@
                     });
                     $(data).each(function(index, element) {
                         var dateTime = new Date(element.date);
-                        $('#event-list').prepend('<div class="event" style="background-color:' + element.color + '">' + dateTime.toLocaleString() + '<br />' + element.title + '</div>');
+                        $('#event-list').prepend('<div class="event ' + element.eventClass + '">' + dateTime.toLocaleString() + '<br />' + element.title + '</div>');
                     });
                 });
                 //enregistrer un nouvel event lors de la soummision du formulaire
@@ -50,16 +50,16 @@
                     var date = $('#date').val();
                     var hour = $('#hour').val();
                     var title = $('#title').val();
-                    var color = $('#color').val();
-                    if (date !== '' && hour !== '' && color !== '' && title !== '') {
+                    var eventClass = $('#eventClass').val();
+                    if (date !== '' && hour !== '' && eventClass !== '' && title !== '') {
                         var dateTime = new Date(date + 'T' + hour);
                         $.ajax({
                             type: "GET",
                             url: "setNewEvent.php",
-                            data: {date: dateTime.toJSON(), title: title, color: color}
+                            data: {date: dateTime.toJSON(), title: title, eventClass: eventClass}
                         }).done(function(msg) {
                             $('#event-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
-                            $('#event-list').prepend('<div class="event" style="background-color:' + color + '">' + dateTime.toLocaleString() + '<br />' + title + '</div>');
+                            $('#event-list').prepend('<div class="event ' + eventClass + '">' + dateTime.toLocaleString() + '<br />' + title + '</div>');
                             $('#date').val('');
                             $('#hour').val('');
                             $('#title').val('');

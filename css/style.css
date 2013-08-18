@@ -10,11 +10,38 @@ root {
     display: block;
 }
 
-.event {
-    background-color: rgb(250, 167, 50);
-    padding: 10px;
-    margin: 5px;
-    border-radius: 7px;
-    border: solid 1px;
+.event{
+    padding: 8px;
+    border-bottom: solid 1px;
+}
+
+.event:first-of-type {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.event:last-of-type {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom: none;
+}
+
+.event-fft {
+    color: #b94a48;
+    background-color: #f2dede;
+}
+
+.event-ufolep {
+    background-color: #fcf8e3;
+    color: #c09853;
+}
+
+.event-club {
+    color: #468847;
+    background-color: #dff0d8;
+}
+
+.event-other {
+    color: #3a87ad;
+    background-color: #d9edf7;
 }
 
