@@ -1,0 +1,47 @@
+/* 
+    Document   : style
+    Created on : 18 août 2013, 15:05:48
+    Author     : Saturne
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.event{
+    padding: 8px;
+    border-bottom: solid 1px;
+}
+
+.event:first-of-type {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.event:last-of-type {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom: none;
+}
+
+.event-fft {
+    color: #b94a48;
+    background-color: #f2dede;
+}
+
+.event-ufolep {
+    background-color: #fcf8e3;
+    color: #c09853;
+}
+
+.event-club {
+    color: #468847;
+    background-color: #dff0d8;
+}
+
+.event-other {
+    color: #3a87ad;
+    background-color: #d9edf7;
+}
+

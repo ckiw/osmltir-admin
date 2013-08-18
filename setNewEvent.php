@@ -8,10 +8,12 @@ function unstore($file) {
     return json_decode(file_get_contents($file), true);
 }
 
-if (isset($_GET['date'], $_GET['comment'])) {
+if (isset($_GET['date'], $_GET['title'])) {
     $data = unstore('data-event.json');
-    $data[] = array('date' => $_GET['date'], 'comment' => $_GET['comment']);
+    $data[] = array('date' => $_GET['date'], 'title' => nl2br($_GET['title']), 'eventClass' => $_GET['eventClass']);
     store('data-event.json', $data);
-    echo 'fait gresgr h sggrgrgrgggggggggggggggggggggggggggggggggggggggggggggggggggggf';
+    echo 'Succès : événement enregistré.';
 }
+
 ?>
+

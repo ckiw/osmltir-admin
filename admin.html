@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin osmltir-web</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+    </head>
+    <body>
+        <div class="rows">
+            <div id="event-list" class="span6">
+
+            </div>
+            <div class="span6">
+
+                <form action="setNewEvent.php" method="POST" id="event-form">
+                    <input type="text" name="date" id="date" value="" />
+                    <input type="text" name="hour" id="hour" value="" />
+                    <textarea name="title" id="title" rows="4" cols="20"></textarea>
+                    <select id='eventClass' name="eventClass">
+                        <option value="event-fft">Compétition FFT</option>
+                        <option value="event-ufolep">Compétition UFOLEP</option>
+                        <option value="event-club">Evenement Club</option>
+                        <option value="event-other">Autre</option>
+                    </select>
+                    <input type="submit" value="Envoyer" />
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                //Affichage de la liste des events
+                $.get('data-event.json', function(data) {
+                    data.sort(function(a, b) {
+                        a.date.localeCompare(b.date);
+                        return a.date.localeCompare(b.date);
+                    });
+                    $(data).each(function(index, element) {
+                        var dateTime = new Date(element.date);
+                        $('#event-list').prepend('<div class="event ' + element.eventClass + '">' + dateTime.toLocaleString() + '<br />' + element.title + '</div>');
+                    });
+                });
+                //enregistrer un nouvel event lors de la soummision du formulaire
+                $('#event-form').submit(function(e) {
+                    e.preventDefault();
+                    var date = $('#date').val();
+                    var hour = $('#hour').val();
+                    var title = $('#title').val();
+                    var eventClass = $('#eventClass').val();
+                    if (date !== '' && hour !== '' && eventClass !== '' && title !== '') {
+                        var dateTime = new Date(date + 'T' + hour);
+                        $.ajax({
+                            type: "GET",
+                            url: "setNewEvent.php",
+                            data: {date: dateTime.toJSON(), title: title, eventClass: eventClass}
+                        }).done(function(msg) {
+                            $('#event-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
+                            $('#event-list').prepend('<div class="event ' + eventClass + '">' + dateTime.toLocaleString() + '<br />' + title + '</div>');
+                            $('#date').val('');
+                            $('#hour').val('');
+                            $('#title').val('');
+
+                        });
+                    } else {
+                        $('#event-form').before('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Remplis tout les champs avant d\'envoyer le formulaire.</div>');
+                    }
+                });
+
+            });
+        </script>
+    </body>
+</html>
