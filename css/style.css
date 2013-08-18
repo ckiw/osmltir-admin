@@ -14,6 +14,9 @@ body {
     background-image: url('../img/wood.png');
     background-repeat: repeat;
 }
+.event-list{
+    padding: 10px;
+}
 
 .event{
     padding: 8px;
@@ -49,4 +52,6 @@ body {
     color: #3a87ad;
     background-color: #d9edf7;
 }
+
+
 

@@ -7,6 +7,8 @@ and open the template in the editor.
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="css/leaflet.css" />
         <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -14,8 +16,7 @@ and open the template in the editor.
     <body data-spy="scroll">
         <div class="row">
             <div class="span3">
-                <div id="sidebar-nav">
-                    <ul class="nav nav-list affix">
+                    <ul class="nav nav-list bs-docs-sidenav">
                         <li class="nav-header">Menu</li>
                         <li><a href="#accueil">Accueil</a></li>
                         <li><a href="#decouvrir">Découvrir le tir</a></li>
@@ -33,7 +34,6 @@ and open the template in the editor.
                         <li><a href="#liens">Liens</a></li>
                         <li><a href="#sponsors">Sponsors</a></li>
                     </ul>
-                </div><!--/sidebar-nav -->
             </div><!--/span-->
             <div class="span9">
                 <section id="accueil">
@@ -366,7 +366,16 @@ and open the template in the editor.
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/leaflet.js"></script>
         <script type="text/javascript">
-            $('#sidebar-nav').affix({offset: {top: 100, bottom: 100}});
+            setTimeout(function() {
+                $('.bs-docs-sidenav').affix({
+                    offset: {
+                        top: function() {
+                            return $window.width() <= 980 ? 290 : 210;
+                        }
+                        , bottom: 270
+                    }
+                });
+            }, 100);
         </script>
         <script>
             var map = L.map('map').setView([50.64366, 3.01471], 13);
