@@ -784,7 +784,9 @@ h5 {
 }
 
 h6 {
-  font-size: 11.9px;
+  font-size: 12.9px;
+  text-align: left;
+  color: #0088cc;
 }
 
 h1 small {

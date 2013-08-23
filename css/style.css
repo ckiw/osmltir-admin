@@ -11,8 +11,7 @@ root {
 }
 
 body {
-    background-image: url('../img/wood.png');
-    background-repeat: repeat;
+
 }
 .event-list{
     padding: 10px;
@@ -67,11 +66,23 @@ body {
     font-size: 26px;
     font-weight: bold;
     font-style: italic;
+    text-align: center;
+    margin-top: 10px;
 }
 
-#tableau {
+.edttitre{
+    color: #0088cc;
+    font-weight: bold;
+    text-align: left;
+}
+
+.tableau {
+    border: 2px solid #0088CC;
+    border-radius: 5px 5px 5px 5px;
     float: right;
+    padding: 10px;
+    text-align: left;
     width: 380px;
-    margin-top: 5px;
-    text-align: center;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
