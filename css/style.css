@@ -61,3 +61,17 @@ body {
 .bs-docs-sidebar {
 
 }
+
+.titregris {
+    color: gainsboro;
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#tableau {
+    float: right;
+    width: 380px;
+    margin-top: 5px;
+    text-align: center;
+}
