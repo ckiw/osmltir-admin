@@ -76,5 +76,13 @@ body {
     float: left; 
     margin-top: 15px; 
     margin-right: 2px; 
-    margin-left: 2px
+    margin-left: 2px;
+}
+
+.iconValid1{
+    float: left; 
+    margin-top: 25px; 
+    margin-right: 2px; 
+    margin-left: 2px;
+    margin-bottom: 5px;
 }
