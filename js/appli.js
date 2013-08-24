@@ -5,7 +5,7 @@ $(document).ready(function() {
     }
 
     //Affichage de la liste des events
-    $.get('data-event.json', function(data) {
+    $.getJSON('data-event.json.js', function(data) {
         data.sort(function(a, b) {
             a.date.localeCompare(b.date);
             return a.date.localeCompare(b.date);

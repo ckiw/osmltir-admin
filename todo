@@ -2,7 +2,7 @@
 ° templates pour les différentes parties
 ° texte pour différencier ufolep de fft, (ex Ufolep et FFT sont deux fédérations différentes qui permettent de vous licencier, 
                                         si vous ne savez pas, c'est surement que vous n'aurez qu'a prendre une licence ufolep) 
-° pour la partie liens, images avant le texte et si possible de même taille
+° pour la partie liens, images avant le texte et si possible de même taille (utilisation de <ul> + http://maxdesign.developpez.com/tutoriels/css/puce-image-liste/)
     ajouter wikipédia
 ° partie document : 
     status
