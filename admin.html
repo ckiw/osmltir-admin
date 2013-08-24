@@ -40,8 +40,10 @@
         <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
         <script type="text/javascript" src="js/bootstrap-datepicker.fr.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="js/appli.js"></script>
         <script>
             $(document).ready(function() {
+                //initialisation date and datepicker
                 $('#date').datepicker({
                     format: "yyyy-mm-dd",
                     language: "fr",
@@ -49,36 +51,29 @@
                     autoclose: true
                 });
                 $('#hour').timepicker({'timeFormat': 'H:i:s'});
-                //Affichage de la liste des events
-                $.get('data-event.json', function(data) {
-                    data.sort(function(a, b) {
-                        a.date.localeCompare(b.date);
-                        return a.date.localeCompare(b.date);
-                    });
-                    $(data).each(function(index, element) {
-                        var dateTime = new Date(element.date);
-                        $('#event-list h3').after('<div class="event ' + element.eventClass + '"><strong>' + dateTime.toLocaleString() + '</strong><br />' + element.title + '</div>');
-                    });
-                });
+                
                 //enregistrer un nouvel event lors de la soummision du formulaire
                 $('#event-form').submit(function(e) {
                     e.preventDefault();
                     var date = $('#date').val();
                     var hour = $('#hour').val();
                     var title = $('#title').val();
+                    var location = $('#location').val();
                     var eventClass = $('#eventClass').val();
-                    if (date !== '' && hour !== '' && eventClass !== '' && title !== '') {
+                    if (date !== '' && hour !== '' && eventClass !== '' && title !== '' && location !== '') {
                         var dateTime = new Date(date + 'T' + hour);
+                        var event = {date: dateTime.toJSON(), title: title, eventClass: eventClass, location: location};
                         $.ajax({
                             type: "GET",
                             url: "setNewEvent.php",
-                            data: {date: dateTime.toJSON(), title: title, eventClass: eventClass}
+                            data: event
                         }).done(function(msg) {
                             $('#event-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
-                            $('#event-list h3').after('<div class="event ' + eventClass + '"><strong>' + dateTime.toLocaleString() + '</strong><br />' + title + '</div>');
+                            renderEvent('#event-list h3', event);
                             $('#date').val('');
                             $('#hour').val('');
                             $('#title').val('');
+                            $('#location').val('');
 
                         });
                     } else {
