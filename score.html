@@ -20,6 +20,10 @@
                 <form action="setNewScore.php" method="POST" id="score-form">
                     <input type="text" name="date" id="date" value="" placeholder="Date(AAAA-MM-JJ)"/><br /> 
                     <input type="text" name="score" id="score" value="" placeholder="Score"/><br />
+                    <div class="btn-group" data-toggle="buttons-radio">
+                        <button type="button" class="btn btn-primary active">Entrainement</button>
+                        <button type="button" id="competition" class="btn btn-primary">Compétition</button>
+                    </div>
                     <select id='name' name="name">
                         <option value="Carabine ISSF">Carabine ISSF</option>
                         <option value="Carabine UFOLEP">Carabine UFOLEP</option>
@@ -39,6 +43,12 @@
             $(document).ready(function() {
                 function renderScoreGraph() {
                     $.getJSON('data-score.json.js', function(score) {
+                        var long = score.idUser.series.length;
+                        for (var i = 0; i < long; i++) {
+                            score.idUser.series[i].data.sort(function(a, b) {
+                                return a.x - b.x;
+                            });
+                        }
                         $('#score-graph').highcharts({
                             title: {
                                 text: 'Score',
@@ -68,12 +78,13 @@
                 //enregistrer un nouvel event lors de la soummision du formulaire
                 $('#score-form').submit(function(e) {
                     e.preventDefault();
+                    var competition = $('#competition').hasClass('active');
                     var date = $('#date').val();
                     var name = $('#name').val();
                     var score = $('#score').val();
                     if (date !== '' && name !== '' && score !== '') {
                         var dateTime = new Date(date);
-                        var score = {date: dateTime.getTime(), name: name, score: score};
+                        var score = {date: dateTime.getTime(), name: name, score: score, competition: competition};
                         $.ajax({
                             type: "GET",
                             url: "setNewScore.php",
