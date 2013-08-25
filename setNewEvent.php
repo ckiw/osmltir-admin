@@ -9,9 +9,9 @@ function unstore($file) {
 }
 
 if (isset($_GET['date'], $_GET['title'], $_GET['location'], $_GET['eventClass'])) {
-    $data = unstore('data-event.js');
+    $data = unstore('data-event.json.js');
     $data[] = array('date' => $_GET['date'], 'title' => nl2br($_GET['title']), 'location'=>$_GET['location'], 'eventClass' => $_GET['eventClass']);
-    store('data-event.json', $data);
+    store('data-event.json.js', $data);
     echo 'Succès : événement enregistré.';
 }
 
