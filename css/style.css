@@ -91,7 +91,11 @@ body {
 
 }
 
-.marge {
+.marge1 {
+    margin-left: 1em;
+}
+
+.marge2 {
     margin-left: 2em;
 }
 
