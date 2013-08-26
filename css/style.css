@@ -106,3 +106,7 @@ body {
 .bs-docs-sidebar {
 
 }
+
+#score-form .btn-group{
+    margin-bottom: 10px
+}
