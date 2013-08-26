@@ -87,6 +87,22 @@ body {
     margin-bottom: 5px;
 }
 
-#score-form .btn-group{
-    margin-bottom: 10px
+.img-liens {
+
+}
+
+.marge1 {
+    margin-left: 1em;
+}
+
+.marge2 {
+    margin-left: 2em;
+}
+
+.liens{
+  list-style-type: none;
+} 
+
+.bs-docs-sidebar {
+
 }
