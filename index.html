@@ -581,19 +581,19 @@
         <script type="text/javascript" src="js/appli.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                //cacher tout
-                $('section').hide();
-                $('#accueil').show();
-                //initialisation sidenav
-                $('.sidenav').affix({
-                    offset: {top: 100}
-                });
-                //Cacher tout sauf actif
-                $('.affix li a').click(function(e){
-                    e.preventDefault();
-                    $('section').hide();
-                    $($(this).attr('href')).show();
-                });
+//                //cacher tout
+//                $('section').hide();
+//                $('#accueil').show();
+//                //initialisation sidenav
+//                $('.sidenav').affix({
+//                    offset: {top: 100}
+//                });
+//                //Cacher tout sauf actif
+//                $('.affix li a').click(function(e){
+//                    e.preventDefault();
+//                    $('section').hide();
+//                    $($(this).attr('href')).show();
+//                });
                 //options pour la carte
                 var map = L.map('map').setView([50.64366, 3.01471], 13);
                 L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
