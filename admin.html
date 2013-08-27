@@ -24,12 +24,12 @@
                     <input class="input-small" type="text" name="date" id="date" value="" placeholder="Date(AAAA-MM-JJ)"/> 
                     <input class="input-small" type="text" name="hour" id="hour" value="" placeholder="Heure(HH:MM:SS)"/><br />
                     <textarea name="title" id="title" rows="1" cols="20" placeholder="Commentaire"></textarea><br />
-                    <input type="text" name="location" id="location" value="" placeholder="Lieu"/><br />
-                    <select id='eventClass' name="eventClass">
-                        <option value="event-fft">Compétition FFT</option>
-                        <option value="event-ufolep">Compétition UFOLEP</option>
-                        <option value="event-club">Evenement Club</option>
-                        <option value="event-other">Autre</option>
+                    <input type="text" name="url" id="url" value="" placeholder="Lien URL"/><br />
+                    <select id='idEventClass' name="idEventClass">
+                        <option value="1">Compétition FFT</option>
+                        <option value="2">Compétition UFOLEP</option>
+                        <option value="3">Evenement Club</option>
+                        <option value="4">Autre</option>
                     </select><br />
                     <input class='btn btn-primary' type="submit" value="Envoyer" />
                 </form>
@@ -58,14 +58,13 @@
                     var date = $('#date').val();
                     var hour = $('#hour').val();
                     var title = $('#title').val();
-                    var location = $('#location').val();
-                    var eventClass = $('#eventClass').val();
-                    if (date !== '' && hour !== '' && eventClass !== '' && title !== '' && location !== '') {
-                        var dateTime = new Date(date + 'T' + hour);
-                        var event = {date: dateTime.toJSON(), title: title, eventClass: eventClass, location: location};
+                    var url = $('#url').val();
+                    var idEventClass = $('#idEventClass').val();
+                    if (date !== '' && hour !== '' && idEventClass !== '' && title !== '' && url !== '') {
+                        var event = {date: date + 'T' + hour, title: title, idEventClass: idEventClass, url: url};
                         $.ajax({
                             type: "GET",
-                            url: "setNewEvent.php",
+                            url: "bdd.php",
                             data: event
                         }).done(function(msg) {
                             $('#event-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
@@ -73,7 +72,7 @@
                             $('#date').val('');
                             $('#hour').val('');
                             $('#title').val('');
-                            $('#location').val('');
+                            $('#url').val('');
 
                         });
                     } else {
