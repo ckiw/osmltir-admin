@@ -113,3 +113,11 @@ body {
     margin-right: 2px; 
     margin-left: 2px;
 }
+
+.marge4 {
+    margin-left: 4em;
+}
+
+.marge8 {
+    margin-left: 8em;
+}
