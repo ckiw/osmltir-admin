@@ -103,8 +103,8 @@ body {
   list-style-type: none;
 } 
 
-.bs-docs-sidebar {
-
+#score-form .btn-group{
+    margin-bottom: 10px
 }
 
 .iconValid-1 {
