@@ -24,14 +24,30 @@ try {
                 //test presence parametres
                 if (isset($_GET['email'], $_GET['password'])) {
                     $query = $bdd->prepare('SELECT id as idUser, grade, name, firstName FROM User WHERE email = ? AND password = ?');
-                    $query->execute([$_GET['email'], $_GET['password']]);//crypt($_GET['password'], 'osmltir')]
+                    $query->execute([$_GET['email'], $_GET['password']]); //crypt($_GET['password'], 'osmltir')]
                     if ($data = $query->fetch()) {
                         $_SESSION['idUser'] = $data['idUser'];
                         $_SESSION['grade'] = $data['grade'];
                         $_SESSION['name'] = $data['name'] . ' ' . $data['firstName'];
-                        header('Location: score.html');
+                        
+                        $query->closeCursor();
+                    } else {
+                        $email = htmlspecialchars($_GET['email']);
+                        $query = $bdd->prepare('INSERT INTO User ( grade, email, password , name) VALUES ( 0 , ?, ?, ?);');
+                        $query->execute([$email, $_GET['password'], $email]);
+                        $id = $bdd->lastInsertId();
+                        $_SESSION['idUser'] = $id;
+                        $_SESSION['grade'] = 0;
+                        $_SESSION['name'] = $email;
+                        $query->closeCursor();
                     }
+                    header('Location: score.html');
                 }
+                break;
+            case 'disconnect':
+                session_destroy();
+                session_start();
+                echo 'disconnected';
                 break;
         }
     }

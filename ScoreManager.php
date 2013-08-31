@@ -9,7 +9,8 @@ if (isset($_SESSION['idUser'])) {
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         switch ($_GET['action']) {
             case 'select':
-                $query = $bdd->query('SELECT s.id, idDiscipline, date, label, isCompetition, point, d.name as nameDiscipline FROM Score s INNER JOIN Discipline d ON idDiscipline = d.id ORDER BY d.id');
+                $query = $bdd->prepare('SELECT s.id, idDiscipline, date, label, isCompetition, point, d.name as nameDiscipline FROM Score s INNER JOIN Discipline d ON idDiscipline = d.id WHERE idUser = ? ORDER BY d.id');
+                $query->execute([$_SESSION['idUser']]);
                 $series = [];
                 $idDisciplineCurrent = -1;
                 $i = - 1;
