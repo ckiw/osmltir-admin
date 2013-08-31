@@ -14,6 +14,23 @@
     </head>
     <body data-twttr-rendered="true" data-spy="scroll" data-target=".bs-docs-sidebar">
 
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand pull-left" href="index.html">OSML Tir</a>
+                    <div  id="navbar-content" class="nav-collapse collapse">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="container">
 
             <!-- Docs nav
@@ -50,9 +67,9 @@
                             <h1>OSM Lomme Tir</h1>
                         </div>
                         <p>Plus de 200 ans d’histoire de tir à Lomme ! Venez découvrir un sport aux nombreuses disciplines olympiques.
-                        Le club est affilié à la Fédération Française de Tir (FFTir) et à la Fédération multisports UFOLEP. Formateurs diplômés,
-                        équipe dynamique, école de tir labélisée, pôle compétition reconnu au niveau national, buvette sans alcool. 
-                        Venez vous initier au tir sportif dans un club dynamique !</p>
+                            Le club est affilié à la Fédération Française de Tir (FFTir) et à la Fédération multisports UFOLEP. Formateurs diplômés,
+                            équipe dynamique, école de tir labélisée, pôle compétition reconnu au niveau national, buvette sans alcool. 
+                            Venez vous initier au tir sportif dans un club dynamique !</p>
                         <h3>Alors n'hésitez plus, Venez vous faire plaisir !</h3>
                     </section>
 
@@ -230,7 +247,7 @@
                         <h3>Le club house</h3>
                         <img src="img/clubhouse.gif" alt="clubhouse" style="float: right; margin: 0 0 10px 10px;">
                         <p>Un espace de 40m<sup>2</sup> est à disposition pour prendre une collation et échanger entre tireurs. Nous proposons de la petite
-                        restauration et une large gamme de sirops et de boissons fraîches. L'OSML SECTION TIR est labellisé "Club Sportif Sans Alcool"</p>
+                            restauration et une large gamme de sirops et de boissons fraîches. L'OSML SECTION TIR est labellisé "Club Sportif Sans Alcool"</p>
                         <h3>L'espace détente</h3>
                     </section>
 
@@ -586,13 +603,23 @@
         <script type="text/javascript" src="js/appli.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+
+                displayEvents();
+                modifNavbar();
 //                //cacher tout
 //                $('section').hide();
 //                $('#accueil').show();
-//                //initialisation sidenav
-//                $('.sidenav').affix({
-//                    offset: {top: 100}
-//                });
+                //initialisation sidenav
+                setTimeout(function() {
+                    $('.bs-docs-sidenav').affix({
+                        offset: {
+                            top: function() {
+                                return $window.width() <= 980 ? 290 : 210;
+                            }
+                            , bottom: 270
+                        }
+                    });
+                }, 100);
 //                //Cacher tout sauf actif
 //                $('.affix li a').click(function(e){
 //                    e.preventDefault();

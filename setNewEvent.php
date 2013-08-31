@@ -1,19 +1,19 @@
 <?php
+try {
+    if (isset($_GET['date'], $_GET['title'], $_GET['url'], $_GET['idEventClass'])) {
+// Nouvel objet de base SQLite 
+        $bdd = new PDO('sqlite:bdd.sqlite');
+// Quelques options
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-function store($file, $datas) {
-    file_put_contents($file, json_encode($datas));
+        $query = $bdd->prepare('INSERT INTO Event (date, title, url, idEventClass) VALUES (:date, :title, :url, :idEventClass);');
+        $isSuccess = $query->execute(['date' => $_GET['date'], 'title' => $_GET['title'], 'url' => $_GET['url'], 'idEventClass' => $_GET['idEventClass']]);
+        $query->closeCursor();
+        echo ($isSuccess)?'Succès : événement enregistré.':'Erreur';
+    }
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
 }
-
-function unstore($file) {
-    return json_decode(file_get_contents($file), true);
-}
-
-if (isset($_GET['date'], $_GET['title'], $_GET['location'], $_GET['eventClass'])) {
-    $data = unstore('data-event.json.js');
-    $data[] = array('date' => $_GET['date'], 'title' => nl2br($_GET['title']), 'location'=>$_GET['location'], 'eventClass' => $_GET['eventClass']);
-    store('data-event.json.js', $data);
-    echo 'Succès : événement enregistré.';
-}
-
 ?>
+
 
