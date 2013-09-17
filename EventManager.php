@@ -1,23 +1,24 @@
 <?php
 
 session_start();
-if (isset($_SESSION['idUser'])) {
-    if ($_SESSION['grade'] > 0) {
-        try {
+try {
 // Nouvel objet de base SQLite 
-            $bdd = new PDO('sqlite:bdd.sqlite');
+    $bdd = new PDO('sqlite:bdd.sqlite');
 // Quelques options
-            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($_GET['action'] == 'select') {
+        $query = $bdd->query('SELECT e.id, date, title, url, color, backgroundColor FROM Event e INNER JOIN EventClass es ON idEventClass = es.id');
+        $data = [];
+        while ($event = $query->fetch()) {
+            $data[] = array('id' => $event['id'], 'date' => $event['date'], 'title' => $event['title'], 'url' => $event['url'], 'color' => $event['color'], 'backgroundColor' => $event['backgroundColor']);
+        }
+        echo json_encode($data);
+        $query->closeCursor();
+    } else
+    if (isset($_SESSION['idUser'])) {
+        if ($_SESSION['grade'] > 0) {
+
             switch ($_GET['action']) {
-                case 'select':
-                    $query = $bdd->query('SELECT e.id, date, title, url, color, backgroundColor FROM Event e INNER JOIN EventClass es ON idEventClass = es.id');
-                    $data = [];
-                    while ($event = $query->fetch()) {
-                        $data[] = array('id' => $event['id'], 'date' => $event['date'], 'title' => $event['title'], 'url' => $event['url'], 'color' => $event['color'], 'backgroundColor' => $event['backgroundColor']);
-                    }
-                    echo json_encode($data);
-                    $query->closeCursor();
-                    break;
 
                 case 'insert':
                     if (isset($_GET['date'], $_GET['title'], $_GET['url'], $_GET['idEventClass'])) {
@@ -36,13 +37,13 @@ if (isset($_SESSION['idUser'])) {
                         echo ($isSuccess) ? 'Succès : événement supprimé.' : 'Erreur';
                     }
             }
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
         }
+        else
+            echo "Vous n'avez pas les droits.";
     }
     else
-        echo "Vous n'avez pas les droits.";
+        echo "Vous n'êtes pas connecté.";
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
 }
-else
-    echo "Vous n'êtes pas connecté.";
 ?>
