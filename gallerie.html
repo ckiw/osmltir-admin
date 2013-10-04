@@ -57,48 +57,53 @@
             
                 <div class="span9">
 
-                <!-- Accueil
-                ================================================== -->
+            <!-- Championnat de France 2010
+            ================================================== -->
                     <section id="CdF10M2010">
                         <h1>Championnat de France Indoor à Montluçon</h1>
                             <p>Ce jeudi 1 Avril 2010 se déroulé le match Arbalète Field S1, nous avons deux tireurs du club qui étaient présent: Anthony B. et Loïc D. 
                             Après une préparation physique intense Auvergnate: Ascension du Puy de Dôme, Dégustation Gastronomique de la Région, etc.
                             Nos deux tireurs ont effectué un tir assez moyen (378/400 pour Loïc et 375/400 pour Anthony).</p>
-                        <p>
-                            <button id="start-slideshow" class="btn btn-large btn-success" data-slideshow="5000" data-target="#modal-gallery" data-selector="#gallery [data-gallery=gallery]">Diaporama</button>
-                            <button id="toggle-fullscreen" class="btn btn-large btn-primary" data-toggle="button">Plein écran</button>
-                        </p>
-                        <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery"></div>
+                        <div id="myCarousel" class="carousel slide">
+                            <div class="carousel-inner">
+                            <div class="item">
+                                <img src="img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                                <div class="carousel-caption">
+                                <h4>First Thumbnail label</h4>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                            <div class="item active">
+                                <img src="img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                                <div class="carousel-caption">
+                                <h4>Second Thumbnail label</h4>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+                                <div class="carousel-caption">
+                                <h4>Third Thumbnail label</h4>
+                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                            <a class="carousel-control left" data-slide="prev" href="#myCarousel">‹</a> 
+                            <a class="carousel-control right" data-slide="next" href="#myCarousel">›</a>
+                            </div>
+                        </div>
                         <br>
                     </section>
-                    <div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
-                        <div class="modal-header">
-                            <a class="close" data-dismiss="modal">&times;</a>
-                            <h3 class="modal-title"></h3>
-                        </div>
-                        <div class="modal-body"><div class="modal-image"></div></div>
-                        <div class="modal-footer">
-                            <a class="btn modal-download" target="_blank">
-                                <i class="icon-download"></i>
-                                <span>Download</span>
-                            </a>
-                            <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000">
-                                <i class="icon-play icon-white"></i>
-                                <span>Slideshow</span>
-                            </a>
-                            <a class="btn btn-info modal-prev">
-                                <i class="icon-arrow-left icon-white"></i>
-                                <span>Previous</span>
-                            </a>
-                            <a class="btn btn-primary modal-next">
-                                <span>Next</span>
-                                <i class="icon-arrow-right icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
+                
+            <!-- National 2011
+            ================================================== -->
+                    <section id="NatAr2011">
+                        
+                    </section>
                 </div>
             </div>
         </div>
+        
+       
         
         <!-- Footer
         ================================================== -->
@@ -117,47 +122,9 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/leaflet.js"></script>
         <script type="text/javascript" src="js/appli.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/load-image.js"></script>
         <script src="js/bootstrap-image-gallery.js"></script>
         <script src="js/main.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-
-                displayEvents();
-                modifNavbar();
-//                //cacher tout
-//                $('section').hide();
-//                $('#accueil').show();
-                //initialisation sidenav
-//                setTimeout(function() {
-//                    $('.bs-docs-sidenav').affix({
-//                        offset: {
-//                            top: function() {
-//                                return window.width() <= 980 ? 290 : 210;
-//                            }
-//                            , bottom: 270
-//                        }
-//                    });
-//                }, 100);
-//                //Cacher tout sauf actif
-//                $('.affix li a').click(function(e){
-//                    e.preventDefault();
-//                    $('section').hide();
-//                    $($(this).attr('href')).show();
-//                });
-                //options pour la carte
-                var map = L.map('map').setView([50.64366, 3.01471], 13);
-                L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-                }).addTo(map);
-
-                L.marker([50.64366, 3.01471]).addTo(map)
-                        .bindPopup("Club de tir<br />de Lomme").openPopup();
-            });
-        </script>
     </body>
 </html>
-
