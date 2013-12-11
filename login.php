@@ -54,6 +54,7 @@ try {
                     $query->closeCursor();
                     header('Location: score.html');
                 }
+                break;
 
             case 'disconnect':
                 session_destroy();
