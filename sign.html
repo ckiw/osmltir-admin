@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page d'inscription</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+        <link href="css/docs.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand pull-left" href="index.html">OSML Tir</a>
+                    <div  id="navbar-content" class="nav-collapse collapse">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class='centrer'>
+            <h3>Inscription</h3>
+            <form action="login.php" method="POST" id="score-form">
+                <input type="text" name="email" id="email" value="" placeholder="Email" autocomplete="on"/><br /> 
+                <input name="password" type="password" placeholder="Mot de passe"/><br />
+                <input type="text" name="name" id="name" value="" placeholder="Nom"/><br />
+                <input type="text" name="firstName" id="firstName" value="" placeholder="Prénom"/><br />
+                <input class='btn btn-primary' type="submit" value="S'inscrire" />
+            </form>
+
+        </div>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    </body>
+</html>
