@@ -35,10 +35,7 @@
                 <form action="ScoreManager.php" method="POST" id="score-form">
                     <input type="text" name="date" id="date" value="" placeholder="Date(AAAA-MM-JJ)" autocomplete="off"/><br /> 
                     <select id='idDiscipline' name="idDiscipline">
-                        <option value="2">Carabine ISSF</option>
-                        <option value="1">Carabine UFOLEP</option>
-                        <option value="3">Pistolet</option>
-                        <option value="4">Arbalète Match</option>
+
                     </select><br />
                     <div class="btn-group" data-toggle="buttons-radio">
                         <button type="button" class="btn btn-primary active">Entrainement</button>
@@ -134,7 +131,20 @@
                         $('#score-form').before('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Remplis tout les champs avant d\'envoyer le formulaire.</div>');
                     }
                 });
-
+                
+                //Obtention des disciplines 
+                $.getJSON('DisciplineManager.php',{action:'get'},function(listOfCategories){
+                    var options = "";
+                    listOfCategories.forEach(function(category){
+                        options += "<optgroup label="+ category.label +">";
+                        category.disciplines.forEach(function(discipline){
+                            options += "<option value="+ discipline.id +">" +discipline.name + "</option>";
+                        });
+                        options += "</optgroup>";
+                    });
+                    $("#idDiscipline").append(options);
+                });
+                    
             });
         </script>
     </body>
