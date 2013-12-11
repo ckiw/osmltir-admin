@@ -1,0 +1,5 @@
+<Files bdd.sqlite>
+
+Deny from all
+
+</Files>
