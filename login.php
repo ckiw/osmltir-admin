@@ -24,26 +24,37 @@ try {
                 //test presence parametres
                 if (isset($_GET['email'], $_GET['password'])) {
                     $query = $bdd->prepare('SELECT id as idUser, grade, name, firstName FROM User WHERE email = ? AND password = ?');
-                    $query->execute([$_GET['email'], $_GET['password']]); //crypt($_GET['password'], 'osmltir')]
+                    $query->execute([$_GET['email'], crypt($_GET['password'], 'osmltir')]); //crypt($_GET['password'], 'osmltir')]
                     if ($data = $query->fetch()) {
                         $_SESSION['idUser'] = $data['idUser'];
                         $_SESSION['grade'] = $data['grade'];
                         $_SESSION['name'] = $data['name'] . ' ' . $data['firstName'];
+
+                        $query->closeCursor();
+                        header('Location: score.html');
                         
-                        $query->closeCursor();
                     } else {
-                        $email = htmlspecialchars($_GET['email']);
-                        $query = $bdd->prepare('INSERT INTO User ( grade, email, password , name) VALUES ( 0 , ?, ?, ?);');
-                        $query->execute([$email, $_GET['password'], $email]);
-                        $id = $bdd->lastInsertId();
-                        $_SESSION['idUser'] = $id;
-                        $_SESSION['grade'] = 0;
-                        $_SESSION['name'] = $email;
-                        $query->closeCursor();
+                        header('Location: index.html?loginError=1');
                     }
-                    header('Location: score.html');
+                    
                 }
                 break;
+
+            case "sign":
+                if (isset($_GET['email'], $_GET['password'], $_GET['name'], $_GET['firstName'])) {
+                    $email = htmlspecialchars($_GET['email']);
+                    $name = htmlspecialchars($_GET['name']);
+                    $firstName = htmlspecialchars($_GET['firstName']);
+                    $query = $bdd->prepare('INSERT INTO User ( grade, email, password , name, firstName) VALUES ( 0 , ?, ?, ?, ?);');
+                    $query->execute([$email, crypt($_GET['password'], 'osmltir'), $name, $firstName]);
+                    $id = $bdd->lastInsertId();
+                    $_SESSION['idUser'] = $id;
+                    $_SESSION['grade'] = 0;
+                    $_SESSION['name'] = $data['name'] . ' ' . $data['firstName'];
+                    $query->closeCursor();
+                    header('Location: score.html');
+                }
+
             case 'disconnect':
                 session_destroy();
                 session_start();
