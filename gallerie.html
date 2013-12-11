@@ -1,34 +1,19 @@
-<!DOCTYPE HTML>
-<!--
-/*
- * Bootstrap Image Gallery 2.10.1
- * https://github.com/blueimp/Bootstrap-Image-Gallery
- *
- * Copyright 2011, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
--->
-<html lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-        <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
-        <meta charset="utf-8">
-        <title>Site officiel de l'OSM Lomme Tir</title>
+        <title>Site officiel de l'OSM Lomme Tir </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-responsive.css" rel="stylesheet">
         <link href="css/docs.css" rel="stylesheet">
         <link href="css/leaflet.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <link href="css/glyphicons.css" rel="stylesheet">
-        <!--[if lt IE 7]><link rel="stylesheet" href="css/bootstrap-ie6.css"><![endif]-->
-        <link rel="stylesheet" href="css/bootstrap-image-gallery.css">
-    </head> 
+    </head>
     <body data-twttr-rendered="true" data-spy="scroll" data-target=".bs-docs-sidebar">
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -38,7 +23,8 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand pull-left" href="index.html">OSML Tir</a>
-                    <div id="navbar-content" class="nav-collapse collapse"></div>
+                    <div id="navbar-content" class="nav-collapse collapse">
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,52 +40,121 @@
                         <li><a href="#NatAr2011"><i class="icon-chevron-right"></i> National Été 2011 </a></li>   
                     </ul>
                 </div>
-            
+
                 <div class="span9">
 
-                <!-- Accueil
-                ================================================== -->
+                    <!-- Championnat de France 2010
+                    ================================================== -->
                     <section id="CdF10M2010">
                         <h1>Championnat de France Indoor à Montluçon</h1>
-                            <p>Ce jeudi 1 Avril 2010 se déroulé le match Arbalète Field S1, nous avons deux tireurs du club qui étaient présent: Anthony B. et Loïc D. 
+                        <p>Ce jeudi 1 Avril 2010 se déroulé le match Arbalète Field S1, nous avons deux tireurs du club qui étaient présent: Anthony B. et Loïc D. 
                             Après une préparation physique intense Auvergnate: Ascension du Puy de Dôme, Dégustation Gastronomique de la Région, etc.
                             Nos deux tireurs ont effectué un tir assez moyen (378/400 pour Loïc et 375/400 pour Anthony).</p>
-                        <p>
-                            <button id="start-slideshow" class="btn btn-large btn-success" data-slideshow="5000" data-target="#modal-gallery" data-selector="#gallery [data-gallery=gallery]">Diaporama</button>
-                            <button id="toggle-fullscreen" class="btn btn-large btn-primary" data-toggle="button">Plein écran</button>
-                        </p>
-                        <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery"></div>
                         <br>
+                        <div id="myCarousel" class="carousel slide">
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="img/DSC03419.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Nos deux représentants</h4>
+                                        <p>Loïc D. et Anthony B. sur le pas de tir avant de tirer leur match de Qualification.</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03417.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Arbalète Field 10M</h4>
+                                        <p>Loïc D. de retour des cibles.</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03418.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Tourisme</h4>
+                                        <p>Vue d'en haut du Puy de Dôme.</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03420.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>En action !</h4>
+                                        <p>Anthony en pleine action !!</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03421.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>En action !</h4>
+                                        <p>Loïc en pleine action !!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                        </div>
                     </section>
-                    <div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
-                        <div class="modal-header">
-                            <a class="close" data-dismiss="modal">&times;</a>
-                            <h3 class="modal-title"></h3>
+
+                    <!-- National 2011
+                    ================================================== -->
+                    <section id="NatAr2011">
+                        <h1>Finale Nationale Arques 2011</h1>
+                        <p>Ci-dessous quelques photos de nos Champions lors du National Été 2011, organisé par le club de Arques (62) avec l'aide du club de Saint-Omer pour les installations 25M.
+                            De très belles performances pour l'OSML Tir, avec des champions et vice-champions National.</p>
+                        <br>
+                        <div id="myCarousel1" class="carousel slide">
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel1" data-slide-to="1" class=""></li>
+                                <li data-target="#myCarousel1" data-slide-to="2" class=""></li>
+                                <li data-target="#myCarousel1" data-slide-to="3" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="img/DSC03416.JPG" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Pistolet 25M</h4>
+                                        <p>David D. en action, vérification des impacts au 25M. Stand de tir de Saint-Omer (62)</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03423.JPG" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Pistolet 25M</h4>
+                                        <p>Équipe composée de David D., Laurent M. et Franck N. termine à la troisième place en seconde Division.</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03435.JPG" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Third Thumbnail label</h4>
+                                        <p>David prend la pose avec ses trophées du week-end ! Félicitations à lui pour ses résultats</p>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="img/DSC03436.JPG" alt="">
+                                    <div class="carousel-caption">
+                                        <h4>Third Thumbnail label</h4>
+                                        <p>David prend la pose avec ses trophées du week-end ! Félicitations à lui pour ses résultats</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel1" data-slide="prev">‹</a>
+                            <a class="right carousel-control" href="#myCarousel1" data-slide="next">›</a>
                         </div>
-                        <div class="modal-body"><div class="modal-image"></div></div>
-                        <div class="modal-footer">
-                            <a class="btn modal-download" target="_blank">
-                                <i class="icon-download"></i>
-                                <span>Download</span>
-                            </a>
-                            <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000">
-                                <i class="icon-play icon-white"></i>
-                                <span>Slideshow</span>
-                            </a>
-                            <a class="btn btn-info modal-prev">
-                                <i class="icon-arrow-left icon-white"></i>
-                                <span>Previous</span>
-                            </a>
-                            <a class="btn btn-primary modal-next">
-                                <span>Next</span>
-                                <i class="icon-arrow-right icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
-        
+
+
+
         <!-- Footer
         ================================================== -->
         <footer class="footer">
@@ -117,47 +172,11 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/leaflet.js"></script>
         <script type="text/javascript" src="js/appli.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/load-image.js"></script>
-        <script src="js/bootstrap-image-gallery.js"></script>
-        <script src="js/main.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-
-                displayEvents();
                 modifNavbar();
-//                //cacher tout
-//                $('section').hide();
-//                $('#accueil').show();
-                //initialisation sidenav
-//                setTimeout(function() {
-//                    $('.bs-docs-sidenav').affix({
-//                        offset: {
-//                            top: function() {
-//                                return window.width() <= 980 ? 290 : 210;
-//                            }
-//                            , bottom: 270
-//                        }
-//                    });
-//                }, 100);
-//                //Cacher tout sauf actif
-//                $('.affix li a').click(function(e){
-//                    e.preventDefault();
-//                    $('section').hide();
-//                    $($(this).attr('href')).show();
-//                });
-                //options pour la carte
-                var map = L.map('map').setView([50.64366, 3.01471], 13);
-                L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
-                    maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-                }).addTo(map);
-
-                L.marker([50.64366, 3.01471]).addTo(map)
-                        .bindPopup("Club de tir<br />de Lomme").openPopup();
             });
         </script>
+
     </body>
 </html>
-
