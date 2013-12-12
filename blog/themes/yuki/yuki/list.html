@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+<head>
+	<meta charset="UTF-8" />
+	<title>{article_titre_page}{blog_nom}</title>
+	<meta name="Author" content="{blog_auteur}" />
+	<meta name="description" content="{blog_description}" />
+	<meta name="keywords" content="{keywords}" />
+	<meta name="Generator" content="BlogoText" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+	<link rel="alternate" type="application/rss+xml" title="les billets du blog" href="rss.php" />
+	<link rel="stylesheet" type="text/css" href='{style}/style.css' media="all"/>
+	<style type="text/css">
+	#email-adress { display: none!important; }
+	</style>
+
+</head>
+<body id="top">
+
+<header id="entete">
+        
+	<h1><img src="http://tenlemag.com/osmltir/img/logo1_mini.jpg" alt="logo" style="float: right; margin: 0 0 10px 10px;">
+            
+            <a href="{racine_du_site}">{blog_nom}</a>
+        </h1>
+	<h2>{blog_description}</h2>
+	<div id="menu-wrap">
+		<div id="menu">
+			{recherche}
+			<div class="sous-menu">
+				<a href="http://tenlemag.com/osmltir/index.html">Site OSML Tir</a>
+				<a href="http://www.tenlemag.com/">Tenlemag</a>
+				<a href="https://www.facebook.com/pages/OSM-Lomme-Section-Tir/120681891293851">Facebook</a>
+			</div>
+			<br class="menuclearfix" />
+		</div>
+	</div>
+</header> <!-- end #entete -->
+
+<!--  Partie principale  -->
+
+<div id="main">
+
+	<section id="midle">
+		<div id="posts">
+		{BOUCLE_posts}
+			blogotext posts
+		{/BOUCLE_posts}
+		</div> <!-- end postS -->
+
+	{pagination}
+
+	</section> <!-- end midle  -->
+
+
+	<section id="sidebar">
+		<h4>rechercher les messages</h4>
+		<nav class="calendar">
+			{calendrier}
+			<br/>
+			<form action="/" method="get"><button type="submit" name="random">Un article au hasard ?</button></form>
+		</nav>
+		<h4>ﬂux RSS</h4>
+		<nav class="rss">
+			<ul id="rss">
+				<li><a href="rss.php">RSS</a> : Blog</li>
+				<li><a href="rss.php?mode=links">RSS</a> : Liens</li>
+			</ul>
+		</nav>
+
+		<h4>derniers commentaires</h4>
+		<nav class="lastcoms">
+			{commentaires_encart}
+		</nav>
+                <h4>Newsletter</h4>
+                <div class="newsletter">
+                    <FORM ACTION="http://www.mailinglist.fr/controller/form_ctrl.php?ID=49" target="_blank" METHOD="post">
+                    <INPUT TYPE="HIDDEN" Name="lid" Value="201311182321481026410">
+                    <table width="140" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                    <tr><td style="font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px;">Votre email :</td></tr>
+                    <tr><td><input name="email" type="text" size="20" style="border: 1px solid #778B99;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px;"></td></tr>
+                    <tr><td style="padding-top:5px;font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px;">              
+                     <select name="action">
+                         <option value="subscribe">S'abonner</option>
+                        <option value="unsubscribe">Se désabonner</option>
+                     </select>
+                        </td></tr>
+                    <tr><td style="padding-top:5px;"><input name="envoyer" type="submit" value="Envoyer"></td>
+                     </tr>
+                    </table>
+                    </FORM>
+                </div>
+   
+	</section><!-- end colonne de gauche -->
+</div><!-- end main -->
+
+<!-- footer -->
+<footer id="footer">
+	<b>David-Alexandre Ghesquiere</b>, tous droits réservés – Publié avec <a href="http://lehollandaisvolant.net/blogotext/">BlogoText</a> – Thème par <a href="http://lehollandaisvolant.net/">Timo van Neerden</a>
+</footer>
+
+<script type="text/javascript">
+/* Tag script found at : http://www.siteduzero.com/tutoriel-3-34703-insertion-de-balises-dans-une-zone-de-texte.html */
+function insertTag(startTag, endTag, tag, tagType) {
+	var field = document.getElementById(tag);
+	var scroll = field.scrollTop;
+	field.focus();
+
+	if (window.ActiveXObject) { // C'est IE
+		var textRange = document.selection.createRange();            
+		var currentSelection = textRange.text;
+
+		textRange.text = startTag + currentSelection + endTag;
+		textRange.moveStart("character", -endTag.length - currentSelection.length);
+		textRange.moveEnd("character", -endTag.length);
+		textRange.select();     
+	} else { // c'est pas IE.
+		var startSelection   = field.value.substring(0, field.selectionStart);
+		var currentSelection = field.value.substring(field.selectionStart, field.selectionEnd);
+		var endSelection     = field.value.substring(field.selectionEnd);
+		if (currentSelection == "") { currentSelection = "TEXTE"; }
+		field.value = startSelection + startTag + currentSelection + endTag + endSelection;
+		field.focus();
+		field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);
+	}
+	field.scrollTop = scroll;
+}
+
+function reply(code) {
+	var field = document.getElementById('form-commentaire').getElementsByTagName('textarea')[0];
+	field.focus();
+	if (field.value !== '') {
+		field.value += '\n\n';
+	}
+	field.value += code;
+	field.scrollTop = 10000;
+	field.focus();
+}
+
+function resize(id, dht) {
+	var elem = document.getElementById(id);
+	var ht = elem.offsetHeight;
+	size = Number(ht)+Number(dht);
+	elem.style.height = size+"px";
+	return false;
+}
+
+</script>
+</body>
+</html>
