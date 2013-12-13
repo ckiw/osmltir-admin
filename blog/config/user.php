@@ -1,0 +1,4 @@
+<?php
+$GLOBALS['identifiant'] = 'blog-osml-tir';
+$GLOBALS['mdp'] = '0f3d47831721e23d161eaaf98511342c522c2902452265644689ccb34905612b19b0669d95680d195c93b62f71d1efa58ad6f8a44ba4c9c1eb79c26285b33343';
+?>
