@@ -11,7 +11,7 @@ function modifNavbar() {
             $('#navbar-content').append('<ul class="nav"><li><a href="index.html">Accueil</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="blog/">Blog</a></li></ul><ul class="nav pull-right"><li><a href="sign.html">Inscription</a></li></ul><form method="get" action="login.php" class="navbar-form pull-right"><input name="action" value="connection" type="hidden"\><input name="email" type="text" class="span2" placeholder="Email"\><input name="password" type="password" class="span2" placeholder="Mot de passe"\><button type="submit" class="btn">Se connecter</button></form>');
         }
         $('#disconnect').click(function(e) {
-            e.preventDefault();
+            e.preventDefault(); 
             $.getJSON('login.php', {action: 'disconnect'}, function(rep) {
                 $('#navbar-content').children().remove();
                 $('#navbar-content').append('<ul class="nav"><li><a href="index.html">Accueil</a></li></ul><form method="get" action="login.php" class="navbar-form pull-right"><input name="action" value="connection" type="hidden"\><input name="email" type="text" class="span2" placeholder="Email"\><input name="password" type="password" class="span2" placeholder=Mot de passe\><button type="submit" class="btn">Submit</button></form>');
