@@ -3,3 +3,30 @@
 Deny from all
 
 </Files>
+
+<Files .htpasswd>
+
+Deny from all
+
+</Files>
+
+
+<Files phpliteadmin.config.php>
+
+AuthUserFile /homez.541/tenlemag/www/osmltir/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Acces Restreint"
+AuthType basic
+require valid-user
+
+</Files>
+
+<Files phpliteadmin.php>
+
+AuthUserFile /homez.541/tenlemag/www/osmltir/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Acces Restreint"
+AuthType basic
+require valid-user
+
+</Files>
