@@ -10,7 +10,7 @@ try {
         switch ($_GET['action']) {
 
             case 'get':
-                $query = $bdd->query('SELECT id as idDiscipline, name FROM Discipline');
+                $query = $bdd->query('SELECT id, name FROM Discipline');
                 $disciplineList = [['label'=>"Disciplines","disciplines"=>[]]];
                 while ($data = $query->fetch()) {
                     $disciplineList[0]["disciplines"][]= ["id"=>$data["id"],"name"=>$data["name"]];
