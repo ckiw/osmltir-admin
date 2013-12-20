@@ -47,6 +47,7 @@
                 </form>
             </div>
         </div>
+
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
@@ -56,12 +57,12 @@
         <script>
             $(document).ready(function() {
                 modifNavbar();
-              
+
                 function renderScoreGraph() {
-                    $.getJSON('ScoreManager.php', {action: 'select'}, function(series) {
-                        var long = series.length;
+                    $.getJSON('ScoreManager.php', {action: 'select'}, function(scoreArray) {
+                        var long = scoreArray.length;
                         for (var i = 0; i < long; i++) {
-                            series[i].data.sort(function(a, b) {
+                            scoreArray[i].data.sort(function(a, b) {
                                 return a.x - b.x;
                             });
                         }
@@ -88,13 +89,41 @@
                                 spline: {
                                     dataLabels: {
                                         enabled: true
-                                    },
+                                    }
+                                },
+                                series: {
+                                    point: {
+                                        events: {
+                                            click: function() {
+                                                var score = this;
+                                                if(confirm('Supprimer le point ?')){
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: "ScoreManager.php",
+                                                    data: {action: "delete", idScore: score.id}
+                                                }).done(function(msg) {
+                                                    score.remove();
+                                                    $('#score-form').before('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + msg + '</div>');
+                                                });
+
+                                                } else {
+                                                return false;
+                                                }
+                                            }
+
+                                        }
+                                    }
                                 }
+
+
                             },
-                            series: series
+                            series: scoreArray
+
+
                         });
                     });
                 }
+
                 //Initialisation graph
                 renderScoreGraph();
                 //initialisation date and datepicker
@@ -131,20 +160,20 @@
                         $('#score-form').before('<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Remplis tout les champs avant d\'envoyer le formulaire.</div>');
                     }
                 });
-                
+
                 //Obtention des disciplines 
-                $.getJSON('DisciplineManager.php',{action:'get'},function(listOfCategories){
+                $.getJSON('DisciplineManager.php', {action: 'get'}, function(listOfCategories) {
                     var options = "";
-                    listOfCategories.forEach(function(category){
-                        options += "<optgroup label="+ category.label +">";
-                        category.disciplines.forEach(function(discipline){
-                            options += "<option value="+ discipline.id +">" +discipline.name + "</option>";
+                    listOfCategories.forEach(function(category) {
+                        options += "<optgroup label=" + category.label + ">";
+                        category.disciplines.forEach(function(discipline) {
+                            options += "<option value=" + discipline.id + ">" + discipline.name + "</option>";
                         });
                         options += "</optgroup>";
                     });
                     $("#idDiscipline").append(options);
                 });
-                    
+
             });
         </script>
     </body>
