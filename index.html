@@ -175,6 +175,7 @@
                                     <i class="icon-g-bus"></i> Ligne: 10, Arrêt: Lomme-Lambersart<br />
                                     <i class="icon-g-train"></i> Ligne: 2, Station: Pont supérieur<br />
                                     <i class="icon-g-car"></i> Parking de 50 places<br />
+                                    🚲 Vlille Station : Pont Supérieur
                                 </address>
                             </div>
                         </div>
@@ -662,10 +663,10 @@
 //                    $($(this).attr('href')).show();
 //                });
                 //options pour la carte
-                var map = L.map('map').setView([50.64366, 3.01471], 14);
-                L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+                var map = L.map('map').setView([50.64366, 3.01471], 16);
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
                 L.marker([50.64366, 3.01471]).addTo(map)
