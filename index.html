@@ -176,6 +176,7 @@
                                     <i class="icon-g-train"></i> Ligne: 2, Station: Pont supérieur<br />
                                     Vlille : Station Pont Supérieur à 100m<br />
                                     <i class="icon-g-car"></i> Parking de 50 places<br />
+                                    🚲 V'lille Station : Pont Supérieur
                                 </address>
                             </div>
                         </div>
@@ -423,7 +424,39 @@
                         <div class="page-header">
                             <h1>Documents</h1>
                         </div>
-                        <p>Ici seront disponible tous les documents utile au fonctionnement du club ainsi que les différents calendriers.</p>
+                        <dl>
+                            <dt class="titrebleu">Documents utiles</dt>
+                            <dd>
+                                <ul>
+                                    <li><a href="https://osmltir.fr/owncloud/public.php?service=files&t=0464be903fd10212af184f0e4c99638b"> Statuts </a></li>
+                                    <li><a href="https://osmltir.fr/owncloud/public.php?service=files&t=2d4f53a7cb18fbda5db8e14e7507fd0c"> Réglement Intérieur </a></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        
+                        <!--
+                        <h3>Plan de Tir Régional Hiver Pistolet</h3>
+                        <p>Le régional Hiver pistolet se déroulera le 18 et 19 janvier 2014, au stand de tir de Ronchin.</p>
+                        <address>
+                            <strong><i class="icon-g-home"></i><span class="marge1">Tir Sportif Ronchinnois</span></strong><br />
+                                Rue Pierre Dupont<br />
+                                59790 Ronchin, FRANCE<br />
+                        </address>
+                        <p>Voici le plan de tir de nos compétiteurs en lice pour la qualification au National.</p>
+                        <img src="img/plantirronchin.PNG">
+                        
+                        <h3>Plan de Tir Régional Hiver Carabine</h3>
+                        <p>Le régional Hiver carabine se déroulera le 25 et 26 Janvier 2014, au stand de tir de Arques.</p>
+                        <address>
+                            <strong><i class="icon-g-home"></i><span class="marge1">A.L. Arques</span></strong><br />
+                                4 Rue Pierre Brossolette<br />
+                                62510 Arques, FRANCE<br />
+                        </address>
+                        <p>Voici le plan de tir de nos compétiteurs en lice pour la qualification au National.</p>
+                        <img src="img/plantirarques.JPG">
+                        
+                        -->
+                        
                     </section>
 
                     <!-- Évènements
@@ -632,10 +665,10 @@
 //                    $($(this).attr('href')).show();
 //                });
                 //options pour la carte
-                var map = L.map('map').setView([50.64366, 3.01471], 14);
-                L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+                var map = L.map('map').setView([50.64366, 3.01471], 16);
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
-                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
                 L.marker([50.64366, 3.01471]).addTo(map)
