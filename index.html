@@ -466,17 +466,17 @@
 							<dt class="titrebleu">Documents utiles</dt>
 							<dd>
 								<a href="https://osmltir.fr/owncloud/public.php?service=files&t=0464be903fd10212af184f0e4c99638b"><i class="icon-g-briefcase">
-								</i>Statuts</a>
+								</i> Statuts </a>
 								</br>
 								<a href="https://osmltir.fr/owncloud/public.php?service=files&t=2d4f53a7cb18fbda5db8e14e7507fd0c"><i class="icon-g-briefcase">
-								</i>Réglement Intérieur</a></li>
+								</i> Réglement Intérieur </a></li>
 							</dd>
 						</dl>
 					</section>
 
 					<!-- Agenda
 ================================================== -->
-					<section id="evenements">
+					<section id="agenda">
 						<div class="page-header">
 							<h1>Agenda</h1>
 						</div>
@@ -732,8 +732,31 @@
 				.bindPopup("Club de tir<br />de Lomme").openPopup();
 
 				$('#calendar').fullCalendar({
-					events: 'https://www.google.com/calendar/feeds/osmltir%40gmail.com/public/basic'
-				});
+					eventSources: [
+
+						//	Calendrier OSM Lomme Tir
+						{
+						url: "https://www.google.com/calendar/feeds/osmltir%40gmail.com/public/basic",
+						currentTimezone: 'Europe/Paris',
+						},
+
+						//	Calendrier FFTir
+						{
+						url: "https://www.google.com/calendar/feeds/9cqlm0fi1pls7jkrluoni2n7l4%40group.calendar.google.com/public/basic",
+						currentTimezone: 'Europe/Paris',
+						backgroundColor: '#f80ef8',
+						borderColor: '#f80ef8',
+						},
+
+						//	Calendrier UFOLEP
+						{
+						url: "https://www.google.com/calendar/feeds/ljbq8cfip8s1vvk2ec74a074qs%40group.calendar.google.com/public/basic",
+						currentTimezone: 'Europe/Paris',
+						backgroundColor: '#0df00d',
+						borderColor: '#0df00d'
+						}
+        			]
+    			});
 			});
 
 		</script>
